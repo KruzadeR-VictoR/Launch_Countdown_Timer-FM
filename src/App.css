@@ -15,6 +15,13 @@
   background-size: 100% cover, cover;
 }
 
+@media screen and (min-width: 700px) {
+  .Timer {
+    background-position: bottom;
+    background-size: contain;
+  }
+}
+
 .hills {
   position: absolute;
   bottom: 0;

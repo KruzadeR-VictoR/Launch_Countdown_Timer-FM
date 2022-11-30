@@ -13,6 +13,10 @@
   background-repeat: no-repeat;
   background-position: 75% bottom, center;
   background-size: 100% cover, cover;
+  @media screen and (min-width:700px) {
+    background-position: bottom;
+    background-size: contain;
+  }
 }
 
 .hills {
