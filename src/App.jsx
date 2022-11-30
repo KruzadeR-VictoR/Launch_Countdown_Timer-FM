@@ -50,7 +50,7 @@ function App() {
 
   return (
     <>
-      <div className={style.Timer}>
+      <main className={style.Timer}>
         <h1 className={style.header}>WE'RE LAUNCHING SOON</h1>
         <div className={style.countdown}>
           <div className={style.card}>
@@ -105,7 +105,7 @@ function App() {
             />
           </svg>
         </div>
-      </div>
+      </main>
     </>
   );
 }
