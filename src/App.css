@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Red Hat Text", sans-serif;
+}
+
+.Timer {
+  background: url(../public/images/pattern-hills.svg), url(../public/images/bg-stars.svg), -webkit-gradient(linear, left top, left bottom, from(#191a24), to(#2f2338));
+  background: url(../public/images/pattern-hills.svg), url(../public/images/bg-stars.svg), linear-gradient(to bottom, #191a24, #2f2338);
+  background-repeat: no-repeat;
+  background-position: 75% bottom, center;
+  background-size: 100% cover, cover;
+}
+
+.hills {
+  position: absolute;
+  bottom: 0;
+  height: 25%;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: right;
+     object-position: right;
+}
+
+.card {
+  position: relative;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #2c2c44), color-stop(50%, #32374d));
+  background: linear-gradient(to bottom, #2c2c44 50%, #32374d 50%);
+  -webkit-box-shadow: 0 10px 10px #191a24;
+          box-shadow: 0 10px 10px #191a24;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  height: 10px;
+  aspect-ratio: 1;
+  background: #191a24;
+  left: 0;
+  top: 50%;
+  translate: -50% -50%;
+  border-radius: 50%;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  height: 10px;
+  aspect-ratio: 1;
+  background: #191a24;
+  right: 0;
+  top: 50%;
+  translate: 50% -50%;
+  border-radius: 50%;
+}
+
+.socialIcon:hover path {
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  fill: #fb6087;
+}
+/*# sourceMappingURL=App.css.map */
