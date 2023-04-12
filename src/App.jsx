@@ -6,34 +6,43 @@ function App() {
   const [Hours, setHours] = useState(0);
   const [Minutes, setMinutes] = useState(0);
   const [Seconds, setSeconds] = useState(0);
+  const [isFinished, setisFinished] = useState(false);
+  
 
-  const countdown = () => {
-    const endDate = new Date("December 10,2022").getTime();
-    const now = new Date().getTime();
-    const distance = endDate - now;
+  const countFunct = (date) => {
+    const countdown = setInterval(() => {
+      let endDate = date;
+      const now = new Date().getTime();
+      let distance = endDate - now;
 
-    let days = Math.floor(distance / (24 * 60 * 60 * 1000));
-    let hours = Math.floor(
-      (distance % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000)
-    );
-    let minutes = Math.floor((distance % (60 * 60 * 1000)) / (60 * 1000));
-    let seconds = Math.floor((distance % (60 * 1000)) / 1000);
+      let days = Math.floor(distance / (24 * 60 * 60 * 1000));
+      let hours = Math.floor(
+        (distance % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000)
+      );
+      let minutes = Math.floor((distance % (60 * 60 * 1000)) / (60 * 1000));
+      let seconds = Math.floor((distance % (60 * 1000)) / 1000);
 
-    if (distance <= 0) {
-      clearInterval(countdown);
-    } else {
-      setDays(days);
-      setHours(hours);
-      setMinutes(minutes);
-      setSeconds(seconds);
-    }
+      if (distance <= 0) {
+        setisFinished(true);
+        clearInterval(countdown);
+      } else {
+        setDays(days);
+        setHours(hours);
+        setMinutes(minutes);
+        setSeconds(seconds);
+      }
+    }, 1000);
   };
 
   useEffect(() => {
-    setInterval(() => {
-      countdown()
-    }, 1000);
-  }, []);
+    //| if countdown is finished then it resets the target date with 9days time (which is 777600000 in miliseconds)
+    if (isFinished) {
+      const newDate = new Date().getTime() + 777600000;
+      countFunct(newDate);
+    } else {
+      countFunct(new Date("2023-04-12 14:54:00").getTime());
+    }
+  }, [isFinished]);
 
   const style = {
     Timer: "Timer min-h-screen flex flex-col",
@@ -54,19 +63,25 @@ function App() {
         <h1 className={style.header}>WE'RE LAUNCHING SOON</h1>
         <div className={style.countdown}>
           <div className={style.card}>
-            <h1 className={style.cardText}>{Days>=10?Days:`0${Days}`}</h1>
+            <h1 className={style.cardText}>{Days >= 10 ? Days : `0${Days}`}</h1>
             <h2 className={style.unit}>DAYS</h2>
           </div>
           <div className={style.card}>
-            <h1 className={style.cardText}>{Hours>=10 ? Hours : `0${Hours}`}</h1>
+            <h1 className={style.cardText}>
+              {Hours >= 10 ? Hours : `0${Hours}`}
+            </h1>
             <h2 className={style.unit}>Hours</h2>
           </div>
           <div className={style.card}>
-            <h1 className={style.cardText}>{Minutes>=10?Minutes:`0${Minutes}`}</h1>
+            <h1 className={style.cardText}>
+              {Minutes >= 10 ? Minutes : `0${Minutes}`}
+            </h1>
             <h2 className={style.unit}>MINUTES</h2>
           </div>
           <div className={style.card}>
-            <h1 className={style.cardText}>{Seconds>=10?Seconds :`0${Seconds}`}</h1>
+            <h1 className={style.cardText}>
+              {Seconds >= 10 ? Seconds : `0${Seconds}`}
+            </h1>
             <h2 className={style.unit}>SECONDS</h2>
           </div>
         </div>
